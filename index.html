@@ -26,8 +26,26 @@
     }
   </style>
 </head>
-<body>
+<script>
+
+document.onkeydown = function(e) {
+  if(event.keyCode == 123) {
+  return false;
+  }
+  if(e.ctrlKey && e.shiftKey && e.keyCode == 'I'.charCodeAt(0)){
+  return false;
+  }
+  if(e.ctrlKey && e.shiftKey && e.keyCode == 'J'.charCodeAt(0)){
+  return false;
+  }
+  if(e.ctrlKey && e.keyCode == 'U'.charCodeAt(0)){
+  return false;
+  }
+  }
+</script>
+<body oncontextmenu="return false;">
   <!-- Embed 5 YouTube videos -->
+   <h1>Example :- Autoplay 5 YouTube Videos </h1>
    <div class="main">
 
     <iframe 
@@ -52,5 +70,49 @@
     allowfullscreen></iframe>
 
    </div>
+<script>
+
+  document.onkeydown = function (e) {
+    if (e.keyCode == 123) { // F12
+      return false;
+    }
+    if (e.ctrlKey && e.shiftKey && e.keyCode == 'I'.charCodeAt(0)) { // Ctrl+Shift+I
+      return false;
+    }
+    if (e.ctrlKey && e.shiftKey && e.keyCode == 'J'.charCodeAt(0)) { // Ctrl+Shift+J
+      return false;
+    }
+    if (e.ctrlKey && e.keyCode == 'U'.charCodeAt(0)) { // Ctrl+U
+      return false;
+    }
+    if (e.ctrlKey && e.shiftKey && e.keyCode == 'C'.charCodeAt(0)) { // Ctrl+Shift+C
+      return false;
+    }
+  };
+
+  // Prevent right-click (context menu)
+  document.addEventListener('contextmenu', function (e) {
+    e.preventDefault();
+  });
+
+  // Detect if the developer tools are open
+  const detectDevTools = function () {
+    const threshold = 160;
+    const devtools = new Function('debugger;'); // Creates a detectable debugger call
+    devtools();
+
+    const widthDiff = window.outerWidth - window.innerWidth > threshold;
+    const heightDiff = window.outerHeight - window.innerHeight > threshold;
+
+    if (widthDiff || heightDiff) {
+      alert('Developer tools are not allowed!');
+      window.location.reload(); // Refreshes or redirects the page
+    }
+  };
+
+  setInterval(detectDevTools, 1000); 
+</script>
+
+  </script>
 </body>
 </html>
